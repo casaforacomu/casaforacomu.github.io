@@ -3,75 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relatórios — Sara de Paiva</title>
+<title>Sara de Paiva — Relatórios de Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --navy:#0E287F;
+    --lime:#DEDF2B;
+    --ink:#000;
+  }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-    background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-    min-height:100vh;padding:40px 20px 64px;color:#1A1D23;
+    font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+    background:#fff;color:var(--ink);
+    padding:44px 32px 96px;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:760px;margin:0 auto}
+  .wrap{max-width:1180px;margin:0 auto}
+
+  /* ---------- VOLTAR ---------- */
   .back{
-    display:inline-block;background:rgba(255,255,255,.9);color:#667eea;
-    padding:9px 18px;border-radius:8px;text-decoration:none;
-    font-weight:600;font-size:13px;margin-bottom:22px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);transition:all .25s;
+    display:inline-block;color:var(--navy);text-decoration:none;
+    font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+    margin-bottom:56px;transition:opacity .2s ease;
   }
-  .back:hover{background:#fff;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.16)}
-  .header{
-    background:#fff;border-radius:16px;padding:40px;text-align:center;
-    box-shadow:0 10px 40px rgba(0,0,0,.15);margin-bottom:28px;
+  .back:hover{opacity:.55}
+
+  /* ---------- CABEÇALHO ---------- */
+  .client-head{text-align:center;margin-bottom:86px}
+  .name-block{display:inline-block;background:var(--navy);padding:14px 40px}
+  .name-block h1{
+    color:var(--lime);text-transform:uppercase;font-weight:400;
+    font-size:clamp(26px,4.8vw,58px);line-height:1.14;letter-spacing:-.01em;
   }
-  .header .avatar{font-size:44px;margin-bottom:10px;display:block}
-  .header h1{font-size:30px;color:#667eea;margin-bottom:6px}
-  .header .handle{font-size:15px;color:#777;margin-bottom:4px}
-  .header .sub{font-size:13px;color:#aaa}
-  h2{
-    font-size:13px;text-transform:uppercase;letter-spacing:.06em;
-    color:rgba(255,255,255,.85);font-weight:600;margin:0 0 14px 4px;
+  .name-block h1 b{font-weight:800}
+  .handle{
+    margin-top:16px;font-size:clamp(12px,1.2vw,15px);font-weight:400;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
   }
-  .reports{display:grid;gap:14px}
+
+  /* ---------- LABEL ---------- */
+  .label{
+    font-size:clamp(12px,1.15vw,15px);font-weight:400;letter-spacing:.2em;
+    text-transform:uppercase;margin-bottom:26px;
+  }
+
+  /* ---------- RELATÓRIOS ---------- */
+  .reports{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
   .report{
-    background:#fff;border-radius:12px;padding:24px 26px;
-    box-shadow:0 5px 20px rgba(0,0,0,.12);
-    text-decoration:none;color:inherit;
-    display:flex;align-items:center;justify-content:space-between;
-    transition:transform .25s,box-shadow .25s;
+    background:var(--navy);border:2px solid var(--navy);
+    padding:20px 44px;text-decoration:none;
+    display:inline-flex;align-items:baseline;gap:14px;
+    transition:background .22s ease,transform .22s ease;
   }
-  .report:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
-  .report .month{font-size:22px;font-weight:700;color:#667eea}
-  .report .year{font-size:13px;color:#999;margin-top:2px}
-  .report .arrow{font-size:22px;color:#764ba2}
+  .report .month{
+    color:var(--lime);text-transform:uppercase;font-weight:800;
+    font-size:clamp(24px,3.4vw,44px);line-height:1.1;letter-spacing:-.01em;
+    transition:color .22s ease;
+  }
+  .report .year{
+    color:var(--lime);text-transform:uppercase;font-weight:400;
+    font-size:clamp(24px,3.4vw,44px);line-height:1.1;letter-spacing:-.01em;
+    transition:color .22s ease;
+  }
+  .report:hover{background:var(--lime);transform:translateX(6px)}
+  .report:hover .month,.report:hover .year{color:var(--navy)}
+
   .empty{
-    background:rgba(255,255,255,.14);border:1px dashed rgba(255,255,255,.45);
-    border-radius:12px;padding:22px;text-align:center;
-    color:rgba(255,255,255,.9);font-size:14px;
+    border:2px dashed var(--navy);color:var(--navy);
+    padding:22px 30px;font-size:16px;
   }
+
   footer{
-    text-align:center;color:rgba(255,255,255,.7);font-size:12px;
-    margin-top:40px;line-height:1.7;
+    margin-top:88px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:#8A8A8A;
+  }
+
+  @media(max-width:620px){
+    body{padding:28px 20px 64px}
+    .back{margin-bottom:36px}
+    .client-head{margin-bottom:56px}
+    .name-block{padding:12px 22px}
+    .report{padding:16px 26px}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <a class="back" href="../">← Voltar ao dashboard</a>
+  <a class="back" href="../">← Voltar</a>
 
-  <div class="header">
-    <span class="avatar">👩‍💼</span>
-    <h1>Sara de Paiva</h1>
+  <!-- ================= CABEÇALHO ================= -->
+  <div class="client-head">
+    <div class="name-block">
+      <h1><b>Sara</b> de Paiva</h1>
+    </div>
     <div class="handle">@saradpaiva</div>
-    <div class="sub">Relatórios mensais de performance no Instagram</div>
   </div>
 
-  <h2>Relatórios disponíveis</h2>
+  <!-- ================= RELATÓRIOS ================= -->
+  <div class="label">Relatórios disponíveis</div>
   <div class="reports" id="reports"></div>
 
-  <footer>
-    <p>Casa Fora · Relatórios de performance</p>
-  </footer>
+  <footer>Casa Fora Comunicação</footer>
 </div>
 
 <script>
@@ -85,15 +120,10 @@ const reports = [
   { month: "Julho", year: 2026, file: "julho-2026.html" }
 ];
 
-const container = document.getElementById("reports");
-container.innerHTML = reports.length
+document.getElementById("reports").innerHTML = reports.length
   ? reports.map(r => `
       <a class="report" href="${r.file}">
-        <div>
-          <div class="month">${r.month}</div>
-          <div class="year">${r.year}</div>
-        </div>
-        <div class="arrow">→</div>
+        <span class="month">${r.month}</span><span class="year">${r.year}</span>
       </a>
     `).join("")
   : '<div class="empty">Nenhum relatório publicado ainda.</div>';
