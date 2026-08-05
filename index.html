@@ -4,62 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa Fora — Relatórios de Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --navy:#0E287F;
+    --lime:#DEDF2B;
+    --ink:#000;
+    --pill:#EDF0FA;
+  }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-    background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-    min-height:100vh;padding:48px 20px 64px;color:#1A1D23;
+    font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+    background:#fff;color:var(--ink);
+    padding:64px 32px 96px;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:980px;margin:0 auto}
-  .header{
-    background:#fff;border-radius:16px;padding:44px 40px;text-align:center;
-    box-shadow:0 10px 40px rgba(0,0,0,.15);margin-bottom:28px;
+  .wrap{max-width:1180px;margin:0 auto}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding-left:122px;margin-bottom:84px}
+  .hero-text{display:inline-block}
+  .eyebrow{
+    text-align:center;font-size:clamp(11px,1.35vw,17px);font-weight:400;
+    letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px;
   }
-  .header .logo{font-size:44px;margin-bottom:12px}
-  .header h1{font-size:32px;color:#667eea;margin-bottom:8px}
-  .header p{font-size:15px;color:#777}
-  h2{
-    font-size:13px;text-transform:uppercase;letter-spacing:.06em;
-    color:rgba(255,255,255,.85);font-weight:600;margin:0 0 14px 4px;
+  /* o asterisco fica centralizado verticalmente no bloco navy e passa por tras dele */
+  .block-row{position:relative}
+  .spark{
+    position:absolute;left:0;top:50%;
+    transform:translate(-46%,-50%);
+    width:clamp(148px,19vw,252px);height:clamp(148px,19vw,252px);
+    z-index:0;pointer-events:none;
   }
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+  .title-block{position:relative;z-index:1;background:var(--navy);padding:16px 44px}
+  .title-block h1{
+    color:var(--lime);text-transform:uppercase;font-weight:400;
+    font-size:clamp(26px,4.6vw,62px);line-height:1.16;letter-spacing:-.015em;
+    white-space:nowrap;
+  }
+  .title-block h1 b{font-weight:800}
+
+  /* ---------- LABEL ---------- */
+  .label{
+    font-size:clamp(12px,1.15vw,15px);font-weight:400;letter-spacing:.2em;
+    text-transform:uppercase;margin-bottom:26px;
+  }
+
+  /* ---------- CLIENT CARDS ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px}
   .client{
-    background:#fff;border-radius:14px;padding:26px;
-    box-shadow:0 5px 20px rgba(0,0,0,.12);
-    text-decoration:none;color:inherit;display:block;
-    transition:transform .25s,box-shadow .25s;
+    background:var(--lime);border-radius:14px;padding:30px 32px 34px;
+    text-decoration:none;display:block;
+    border:2px solid var(--lime);
+    transition:background .22s ease,border-color .22s ease,transform .22s ease;
   }
-  .client:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.2)}
-  .client .avatar{font-size:36px;margin-bottom:12px;display:block}
-  .client .name{font-size:21px;font-weight:700;color:#667eea;margin-bottom:3px}
-  .client .handle{font-size:13px;color:#999;margin-bottom:16px}
+  .client .name{
+    color:var(--navy);font-size:clamp(24px,2.4vw,31px);font-weight:800;
+    line-height:1.1;margin-bottom:6px;transition:color .22s ease;
+  }
+  .client .handle{
+    color:var(--navy);font-size:17px;font-weight:400;margin-bottom:20px;
+    transition:color .22s ease;
+  }
   .client .count{
-    display:inline-block;background:#EEF0FB;color:#667eea;
-    font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;
+    display:inline-block;background:var(--pill);color:var(--navy);
+    font-size:14px;font-weight:500;padding:5px 14px;border-radius:999px;
+    transition:background .22s ease,color .22s ease;
   }
-  .client .cta{margin-top:18px;font-size:14px;font-weight:600;color:#764ba2}
+  .client .cta{
+    margin-top:24px;color:var(--navy);font-size:17px;font-weight:500;
+    text-decoration:underline;text-underline-offset:3px;
+    transition:color .22s ease;
+  }
+  .client:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-4px)}
+  .client:hover .name,.client:hover .handle,.client:hover .cta{color:var(--lime)}
+  .client:hover .count{background:rgba(222,223,43,.16);color:var(--lime)}
+
   footer{
-    text-align:center;color:rgba(255,255,255,.75);font-size:12px;
-    margin-top:44px;line-height:1.7;
+    margin-top:88px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:#8A8A8A;
+  }
+
+  @media(max-width:620px){
+    body{padding:36px 20px 64px}
+    .hero{padding-left:0;margin-bottom:56px}
+    .hero-text{display:block}
+    .spark{
+      position:relative;left:auto;top:auto;transform:none;
+      display:block;margin:0 auto 10px;width:130px;height:130px;
+    }
+    .title-block{padding:14px 22px}
+    .title-block h1{white-space:normal}
+    .client{padding:24px 24px 28px}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <div class="header">
-    <span class="logo">📊</span>
-    <h1>Relatórios de Performance</h1>
-    <p>Casa Fora — análises mensais de Instagram por cliente</p>
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Casa Fora Comunicação &nbsp;|&nbsp; 2026</div>
+
+      <div class="block-row">
+        <svg class="spark" viewBox="0 0 240 240" aria-hidden="true">
+          <g fill="#DEDF2B">
+            <rect x="107" y="12" width="26" height="108" transform="rotate(0 120 120)"/>
+            <rect x="107" y="24" width="26" height="96"  transform="rotate(45 120 120)"/>
+            <rect x="107" y="8"  width="26" height="112" transform="rotate(90 120 120)"/>
+            <rect x="107" y="32" width="26" height="88"  transform="rotate(135 120 120)"/>
+            <rect x="107" y="16" width="26" height="104" transform="rotate(180 120 120)"/>
+            <rect x="107" y="28" width="26" height="92"  transform="rotate(225 120 120)"/>
+            <rect x="107" y="10" width="26" height="110" transform="rotate(270 120 120)"/>
+            <rect x="107" y="22" width="26" height="98"  transform="rotate(315 120 120)"/>
+          </g>
+        </svg>
+
+        <div class="title-block">
+          <h1>Relatórios de <b>Performance</b></h1>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <h2>Clientes</h2>
+  <!-- ================= CLIENTES ================= -->
+  <div class="label">Clientes</div>
   <div class="grid" id="clients"></div>
 
-  <footer>
-    <p>Casa Fora · Atualizado automaticamente via GitHub Pages</p>
-  </footer>
+  <footer>Casa Fora Comunicação</footer>
 </div>
 
 <script>
@@ -67,26 +142,23 @@
    PARA ADICIONAR UM NOVO CLIENTE:
    1. Crie uma pasta no repositório com o nome (ex.: cliente-novo/)
    2. Coloque dentro dela um index.html e os relatórios
-   3. Adicione uma linha abaixo seguindo o mesmo formato
+   3. Adicione um bloco abaixo seguindo o mesmo formato
    =================================================================== */
 const clients = [
   {
     name: "Sara de Paiva",
     handle: "@saradpaiva",
-    icon: "👩‍💼",
     folder: "sara-paiva",
     reports: 1
   }
 ];
 
-const container = document.getElementById("clients");
-container.innerHTML = clients.map(c => `
+document.getElementById("clients").innerHTML = clients.map(c => `
   <a class="client" href="${c.folder}/">
-    <span class="avatar">${c.icon}</span>
     <div class="name">${c.name}</div>
     <div class="handle">${c.handle}</div>
     <span class="count">${c.reports} ${c.reports === 1 ? "relatório" : "relatórios"}</span>
-    <div class="cta">Ver relatórios →</div>
+    <div class="cta">Ver relatórios</div>
   </a>
 `).join("");
 </script>
