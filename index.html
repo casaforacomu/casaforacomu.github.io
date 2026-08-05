@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios de Performance — Instagram</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 50px;
+    }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .subtitle {
+      font-size: 18px;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .client-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .client-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+    }
+    .client-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .client-icon {
+      font-size: 32px;
+    }
+    .client-info {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .reports-count {
+      background: #f0f0f0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 15px;
+      color: #555;
+    }
+    .view-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .view-button:hover {
+      opacity: 0.9;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+    }
+    .empty-state-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    .empty-state h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    footer {
+      text-align: center;
+      color: white;
+      margin-top: 60px;
+      opacity: 0.8;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 Relatórios de Performance</h1>
+      <p class="subtitle">Análises estratégicas de Instagram por cliente</p>
+    </header>
+
+    <div class="clients-grid" id="clients-grid">
+      <!-- Clientes serão inseridos aqui via JavaScript -->
+    </div>
+
+    <footer>
+      <p>Dashboard de Relatórios — Atualizado em tempo real</p>
+    </footer>
+  </div>
+
+  <script>
+    // Base de dados dos clientes e seus relatórios
+    const clients = [
+      {
+        name: "Sara de Paiva",
+        handle: "@saradpaiva",
+        icon: "👩‍💼",
+        folder: "sara-paiva",
+        reports: [
+          { month: "Julho", year: 2026, file: "julho-2026.html" },
+          { month: "Junho", year: 2026, file: "junho-2026.html" },
+          { month: "Maio", year: 2026, file: "maio-2026.html" }
+        ]
+      },
+      // Adicione mais clientes aqui:
+      // {
+      //   name: "Outro Cliente",
+      //   handle: "@outro",
+      //   icon: "📱",
+      //   folder: "outro-cliente",
+      //   reports: [...]
+      // }
+    ];
+
+    // Renderiza o dashboard
+    function renderDashboard() {
+      const grid = document.getElementById('clients-grid');
+      
+      if (clients.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1;">
+            <div class="empty-state">
+              <div class="empty-state-icon">📋</div>
+              <h2>Nenhum cliente adicionado</h2>
+              <p>Em breve, novos relatórios aparecerão aqui</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = clients.map(client => `
+        <div class="client-card">
+          <div class="client-name">
+            <span class="client-icon">${client.icon}</span>
+            ${client.name}
+          </div>
+          <div class="client-info">
+            <strong>Instagram:</strong> ${client.handle}
+          </div>
+          <div class="reports-count">
+            📈 ${client.reports.length} relatório(s) disponível(is)
+          </div>
+          <a href="${client.folder}/" class="view-button">
+            Ver relatórios →
+          </a>
+        </div>
+      `).join('');
+    }
+
+    renderDashboard();
+  </script>
+</body>
+</html>
