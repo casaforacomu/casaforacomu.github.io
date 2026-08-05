@@ -18,86 +18,90 @@
   body{
     font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
     background:#fff;color:var(--ink);
-    padding:64px 32px 96px;
+    padding:76px 64px 88px;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:1180px;margin:0 auto}
+  .wrap{max-width:940px;margin:0 auto}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;padding-left:122px;margin-bottom:84px}
+  .hero{position:relative;padding-left:84px;margin-bottom:64px}
   .hero-text{display:inline-block}
   .eyebrow{
-    text-align:center;font-size:clamp(11px,1.35vw,17px);font-weight:400;
-    letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px;
+    text-align:center;font-size:clamp(10px,.95vw,12px);font-weight:400;
+    letter-spacing:.22em;text-transform:uppercase;margin-bottom:13px;
   }
   /* o asterisco fica centralizado verticalmente no bloco navy e passa por tras dele */
   .block-row{position:relative}
   .spark{
     position:absolute;left:0;top:50%;
     transform:translate(-46%,-50%);
-    width:clamp(148px,19vw,252px);height:clamp(148px,19vw,252px);
+    width:clamp(104px,13vw,172px);height:clamp(104px,13vw,172px);
     z-index:0;pointer-events:none;
   }
-  .title-block{position:relative;z-index:1;background:var(--navy);padding:16px 44px}
+  .title-block{position:relative;z-index:1;background:var(--navy);padding:12px 30px}
   .title-block h1{
     color:var(--lime);text-transform:uppercase;font-weight:400;
-    font-size:clamp(26px,4.6vw,62px);line-height:1.16;letter-spacing:-.015em;
+    font-size:clamp(20px,3.3vw,42px);line-height:1.16;letter-spacing:-.015em;
     white-space:nowrap;
   }
   .title-block h1 b{font-weight:800}
 
   /* ---------- LABEL ---------- */
   .label{
-    font-size:clamp(12px,1.15vw,15px);font-weight:400;letter-spacing:.2em;
-    text-transform:uppercase;margin-bottom:26px;
+    font-size:clamp(10px,.9vw,12px);font-weight:400;letter-spacing:.2em;
+    text-transform:uppercase;margin-bottom:18px;
   }
 
   /* ---------- CLIENT CARDS ---------- */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
   .client{
-    background:var(--lime);border-radius:14px;padding:30px 32px 34px;
+    background:var(--lime);border-radius:11px;padding:22px 24px 24px;
     text-decoration:none;display:block;
     border:2px solid var(--lime);
     transition:background .22s ease,border-color .22s ease,transform .22s ease;
   }
   .client .name{
-    color:var(--navy);font-size:clamp(24px,2.4vw,31px);font-weight:800;
-    line-height:1.1;margin-bottom:6px;transition:color .22s ease;
+    color:var(--navy);font-size:clamp(17px,1.6vw,21px);font-weight:800;
+    line-height:1.15;margin-bottom:4px;transition:color .22s ease;
   }
   .client .handle{
-    color:var(--navy);font-size:17px;font-weight:400;margin-bottom:20px;
+    color:var(--navy);font-size:13px;font-weight:400;margin-bottom:15px;
     transition:color .22s ease;
   }
   .client .count{
     display:inline-block;background:var(--pill);color:var(--navy);
-    font-size:14px;font-weight:500;padding:5px 14px;border-radius:999px;
+    font-size:11.5px;font-weight:500;padding:4px 11px;border-radius:999px;
     transition:background .22s ease,color .22s ease;
   }
   .client .cta{
-    margin-top:24px;color:var(--navy);font-size:17px;font-weight:500;
+    margin-top:17px;color:var(--navy);font-size:13px;font-weight:500;
     text-decoration:underline;text-underline-offset:3px;
     transition:color .22s ease;
   }
-  .client:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-4px)}
+  .client:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-3px)}
   .client:hover .name,.client:hover .handle,.client:hover .cta{color:var(--lime)}
   .client:hover .count{background:rgba(222,223,43,.16);color:var(--lime)}
 
   footer{
-    margin-top:88px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-    color:#8A8A8A;
+    margin-top:64px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:#9A9A9A;
   }
 
+  @media(max-width:900px){
+    body{padding:56px 40px 72px}
+    .hero{padding-left:60px}
+  }
   @media(max-width:620px){
-    body{padding:36px 20px 64px}
-    .hero{padding-left:0;margin-bottom:56px}
+    body{padding:34px 24px 56px}
+    .hero{padding-left:0;margin-bottom:48px}
     .hero-text{display:block}
     .spark{
       position:relative;left:auto;top:auto;transform:none;
-      display:block;margin:0 auto 10px;width:130px;height:130px;
+      display:block;margin:0 auto 8px;width:88px;height:88px;
     }
-    .title-block{padding:14px 22px}
-    .title-block h1{white-space:normal}
-    .client{padding:24px 24px 28px}
+    .title-block{padding:11px 18px}
+    .title-block h1{white-space:normal;font-size:22px}
+    .client{padding:20px 20px 22px}
   }
 </style>
 </head>
