@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Fora — Relatórios de Performance</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    min-height:100vh;padding:48px 20px 64px;color:#1A1D23;
+  }
+  .wrap{max-width:980px;margin:0 auto}
+  .header{
+    background:#fff;border-radius:16px;padding:44px 40px;text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,.15);margin-bottom:28px;
+  }
+  .header .logo{font-size:44px;margin-bottom:12px}
+  .header h1{font-size:32px;color:#667eea;margin-bottom:8px}
+  .header p{font-size:15px;color:#777}
+  h2{
+    font-size:13px;text-transform:uppercase;letter-spacing:.06em;
+    color:rgba(255,255,255,.85);font-weight:600;margin:0 0 14px 4px;
+  }
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+  .client{
+    background:#fff;border-radius:14px;padding:26px;
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+    text-decoration:none;color:inherit;display:block;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .client:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.2)}
+  .client .avatar{font-size:36px;margin-bottom:12px;display:block}
+  .client .name{font-size:21px;font-weight:700;color:#667eea;margin-bottom:3px}
+  .client .handle{font-size:13px;color:#999;margin-bottom:16px}
+  .client .count{
+    display:inline-block;background:#EEF0FB;color:#667eea;
+    font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;
+  }
+  .client .cta{margin-top:18px;font-size:14px;font-weight:600;color:#764ba2}
+  footer{
+    text-align:center;color:rgba(255,255,255,.75);font-size:12px;
+    margin-top:44px;line-height:1.7;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <span class="logo">📊</span>
+    <h1>Relatórios de Performance</h1>
+    <p>Casa Fora — análises mensais de Instagram por cliente</p>
+  </div>
+
+  <h2>Clientes</h2>
+  <div class="grid" id="clients"></div>
+
+  <footer>
+    <p>Casa Fora · Atualizado automaticamente via GitHub Pages</p>
+  </footer>
+</div>
+
+<script>
+/* ===================================================================
+   PARA ADICIONAR UM NOVO CLIENTE:
+   1. Crie uma pasta no repositório com o nome (ex.: cliente-novo/)
+   2. Coloque dentro dela um index.html e os relatórios
+   3. Adicione uma linha abaixo seguindo o mesmo formato
+   =================================================================== */
+const clients = [
+  {
+    name: "Sara de Paiva",
+    handle: "@saradpaiva",
+    icon: "👩‍💼",
+    folder: "sara-paiva",
+    reports: 1
+  }
+];
+
+const container = document.getElementById("clients");
+container.innerHTML = clients.map(c => `
+  <a class="client" href="${c.folder}/">
+    <span class="avatar">${c.icon}</span>
+    <div class="name">${c.name}</div>
+    <div class="handle">${c.handle}</div>
+    <span class="count">${c.reports} ${c.reports === 1 ? "relatório" : "relatórios"}</span>
+    <div class="cta">Ver relatórios →</div>
+  </a>
+`).join("");
+</script>
+</body>
+</html>
