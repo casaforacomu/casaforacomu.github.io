@@ -50,6 +50,57 @@
   /* ---------- LABEL ---------- */
   .label{
     font-size:clamp(10px,.9vw,12px);font-weight:400;letter-spacing:.2em;
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Fora — Relatórios de Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossoriginh>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E287F;
+    --lime:#DEDF2B;
+    --ink:#000;
+    --pill:#EDF0FA;
+    --bg:#F7F8FA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+    background:var(--bg);color:var(--ink);
+    padding:76px 64px 88px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding-left:84px;margin-bottom:64px}
+  .hero-text{display:inline-block}
+  .eyebrow{
+    text-align:center;font-size:clamp(10px,.95vw,12px);font-weight:400;
+    letter-spacing:.22em;text-transform:uppercase;margin-bottom:13px;
+  }
+  /* o asterisco fica centralizado verticalmente no bloco navy e passa por tras dele */
+  .block-row{position:relative}
+  .spark{
+    position:absolute;left:0;top:50%;
+    transform:translate(-46%,-50%);
+    width:clamp(104px,13vw,172px);height:clamp(104px,13vw,172px);
+    z-index:0;pointer-events:none;
+  }
+  .title-block{position:relative;z-index:1;background:var(--navy);padding:12px 30px}
+  .title-block h1{
+    color:var(--lime);text-transform:uppercase;font-weight:400;
+    font-size:clamp(20px,3.3vw,42px);line-height:1.16;letter-spacing:-.015em;
+    white-space:nowrap;
+  }
+  .title-block h1 b{font-weight:800}
+
+  /* ---------- LABEL ---------- */
+  .label{
+    font-size:clamp(10px,.9vw,12px);font-weight:400;letter-spacing:.2em;
     text-transform:uppercase;margin-bottom:18px;
   }
 
@@ -173,6 +224,12 @@ const clients = [
     handle: "@anyesemijoias",
     folder: "anye-semijoias",
     reports: 2
+  },
+  {
+    name: "VIZyro",
+    handle: "@vizyro",
+    folder: "vizyro",
+    reports: 1
   }
 ];
 
